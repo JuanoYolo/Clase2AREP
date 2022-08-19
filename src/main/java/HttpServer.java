@@ -39,6 +39,12 @@ public class HttpServer {
                     break;
                 }
             }
+            String responseBody ="";
+            if(path.getPath().startsWith("/hello")){
+                responseBody = "Hello " + path.getQuery().substring(5);
+            }else{
+                responseBody = getClientForm();
+            }
 
             outputLine = "HTTP/1.1 200 OK\r\n"
                     + "Content-Type: text/html\r\n"
